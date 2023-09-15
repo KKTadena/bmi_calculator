@@ -5,6 +5,7 @@ void main() {
   group('BMI class tests for males', () {
     test('Compute BMI', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.75,
         weight: 70,
         ageYears: 25,
@@ -17,6 +18,7 @@ void main() {
 
     test('Interpret BMI for age not within 5-19', () {
       final bmiCalculator = BMI(
+        standard: Standard.WHO,
         height: 1.75,
         weight: 70,
         ageYears: 25,
@@ -24,11 +26,12 @@ void main() {
         gender: "male",
       );
 
-      expect(bmiCalculator.interpretBMI(), "Normal weight");
+      expect(bmiCalculator.interpretBMI(), "Normal");
     });
 
     test('Interpret BMI for age within 5-19', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.2,
         weight: 20,
         ageYears: 6,
@@ -42,6 +45,7 @@ void main() {
   group('BMI class tests for females', () {
     test('Compute BMI for female', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.6,
         weight: 55,
         ageYears: 28,
@@ -54,6 +58,7 @@ void main() {
 
     test('Interpret BMI for female age not within 5-19', () {
       final bmiCalculator = BMI(
+        standard: Standard.WHO,
         height: 1.6,
         weight: 55,
         ageYears: 28,
@@ -61,11 +66,12 @@ void main() {
         gender: "female",
       );
 
-      expect(bmiCalculator.interpretBMI(), "Normal weight");
+      expect(bmiCalculator.interpretBMI(), "Normal");
     });
 
     test('Interpret BMI for female age within 5-19 (Normal Weight)', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.4,
         weight: 30,
         ageYears: 10,
@@ -77,6 +83,7 @@ void main() {
 
     test('Interpret BMI for female age within 5-19 (Wasted)', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.4,
         weight: 25,
         ageYears: 10,
@@ -88,6 +95,7 @@ void main() {
 
     test('Interpret BMI for female age within 5-19 (Overweight)', () {
       final bmiCalculator = BMI(
+        standard: Standard.ASIAN,
         height: 1.4,
         weight: 40,
         ageYears: 10,
