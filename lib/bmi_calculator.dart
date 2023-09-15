@@ -1,12 +1,15 @@
 import 'package:bmi_calculator/data/boys_data.dart';
 import 'package:bmi_calculator/data/girls_data.dart';
 
+enum Standard { WHO, ASIAN }
+
 class BMI {
   double height; //  meters
   double weight; //  kilograms
   int ageYears;
   int ageMonths;
   String gender;
+  Standard standard;
 
   BMI({
     required this.height,
@@ -14,6 +17,7 @@ class BMI {
     required this.ageYears,
     required this.ageMonths,
     required this.gender,
+    required this.standard,
   });
 
   double computeBMI() {
@@ -25,22 +29,27 @@ class BMI {
 
     if (ageYears < 5 || ageYears > 19) {
       // Compute BMI normally
-      if (bmi < 16) {
-        return "Severely underweight";
-      } else if (bmi < 16.9) {
-        return "Underweight";
-      } else if (bmi < 18.4) {
-        return "Mildly underweight";
-      } else if (bmi < 24.9) {
-        return "Normal weight";
-      } else if (bmi < 29.9) {
-        return "Overweight";
-      } else if (bmi < 34.9) {
-        return "Obese Class I (Moderate)";
-      } else if (bmi < 39.9) {
-        return "Obese Class II (Severe)";
-      } else {
-        return "Obese Class III (Very severe or morbidly obese)";
+      if(standard == Standard.WHO) {
+        if (bmi < 18.5) {
+          return "Underweight";
+        } else if (bmi < 25) {
+          return "Normal";
+        } else if (bmi < 30) {
+          return "Overweight";
+        } else {
+          return "Obese";
+        }
+      }
+      else {
+        if (bmi < 18.5) {
+          return "Underweight";
+        } else if (bmi < 23) {
+          return "Normal";
+        } else if (bmi < 25) {
+          return "Overweight";
+        } else {
+          return "Obese";
+        }
       }
     } else {
       // Use the gender-specific data
