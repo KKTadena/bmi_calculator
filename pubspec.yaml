@@ -1,7 +1,7 @@
 
 name: bmi_calculator
 description:  A package that provides a way to compute the Body Mass Index (BMI) and interpret the results based on age, gender, weight, and height. The interpretations are based on guidelines from the World Health Organization (WHO)
-version: 0.0.3
+version: 1.0.0
 homepage: https://github.com/zamvar/bmi_calculator
 
 environment:
