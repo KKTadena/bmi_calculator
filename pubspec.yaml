@@ -1,0 +1,26 @@
+
+name: bmi_calculator
+description:  A package that provides a way to compute the Body Mass Index (BMI) and interpret the results based on age, gender, weight, and height. The interpretations are based on guidelines from the World Health Organization (WHO)
+version: 0.0.3
+homepage: https://markbarrientos.com
+
+environment:
+  sdk: '>=2.12.0 <4.0.0'
+
+
+platforms:
+  android: 
+  ios: 
+  web: 
+  windows: 
+  linux: 
+  macos: 
+  
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
