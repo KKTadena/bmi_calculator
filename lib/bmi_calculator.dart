@@ -6,30 +6,45 @@ enum Standard { WHO, ASIAN }
 class BMI {
   double height; //  meters
   double weight; //  kilograms
-  int ageYears;
-  int ageMonths;
+  int ageInDays;
   String gender;
   Standard standard;
 
   BMI({
     required this.height,
     required this.weight,
-    required this.ageYears,
-    required this.ageMonths,
+    required this.ageInDays,
     required this.gender,
     required this.standard,
   });
+
+  int _ageInYears() {
+    return ageInDays ~/ 365;
+  }
+
+  int _ageInMonths() {
+    return (ageInDays - (_ageInYears() * 365)) ~/ 30;
+  }
 
   double computeBMI() {
     return weight / (height * height);
   }
 
+  bool _isAgeCovered() {
+    int ageYears = _ageInYears();
+    int ageMonths = _ageInMonths();
+
+    if (ageYears == 5 && ageMonths == 0) return false;
+    if (ageYears == 19 && ageMonths != 0) return false;
+    return ageYears >= 5 && ageYears <= 19;
+  }
+
   String interpretBMI() {
     double bmi = computeBMI();
 
-    if (ageYears < 5 || ageYears > 19) {
+    if (!_isAgeCovered()) {
       // Compute BMI normally
-      if(standard == Standard.WHO) {
+      if (standard == Standard.WHO) {
         if (bmi < 18.5) {
           return "Underweight";
         } else if (bmi < 25) {
@@ -39,8 +54,7 @@ class BMI {
         } else {
           return "Obese";
         }
-      }
-      else {
+      } else {
         if (bmi < 18.5) {
           return "Underweight";
         } else if (bmi < 23) {
@@ -55,8 +69,12 @@ class BMI {
       // Use the gender-specific data
       Map<String, Map<String, double>> data =
           (gender == "male") ? boysBMI : girlsBMI;
-      String ageKey = "$ageYears-$ageMonths";
-      Map<String, double> ageData = data[ageKey] ?? {};
+      String ageKey = "${_ageInYears()}-${_ageInMonths()}";
+      Map<String, double>? ageData = data[ageKey] ?? null;
+
+      if (ageData == null) {
+        return 'N/A';
+      }
 
       // Find the appropriate percentile based on the data
       if (bmi < ageData['-3']!) {

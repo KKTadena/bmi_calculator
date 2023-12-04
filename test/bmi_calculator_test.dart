@@ -8,8 +8,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.75,
         weight: 70,
-        ageYears: 25,
-        ageMonths: 0,
+        ageInDays: 9125,
         gender: "male",
       );
 
@@ -21,8 +20,7 @@ void main() {
         standard: Standard.WHO,
         height: 1.75,
         weight: 70,
-        ageYears: 25,
-        ageMonths: 0,
+        ageInDays: 9125,
         gender: "male",
       );
 
@@ -34,8 +32,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.2,
         weight: 20,
-        ageYears: 6,
-        ageMonths: 5,
+        ageInDays: 2340,
         gender: "male",
       );
       expect(bmiCalculator.interpretBMI(), "Normal weight");
@@ -48,8 +45,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.6,
         weight: 55,
-        ageYears: 28,
-        ageMonths: 0,
+        ageInDays: 10225,
         gender: "female",
       );
 
@@ -61,8 +57,7 @@ void main() {
         standard: Standard.WHO,
         height: 1.6,
         weight: 55,
-        ageYears: 28,
-        ageMonths: 0,
+        ageInDays: 10225,
         gender: "female",
       );
 
@@ -74,8 +69,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.4,
         weight: 30,
-        ageYears: 10,
-        ageMonths: 6,
+        ageInDays: 3830,
         gender: "female",
       );
       expect(bmiCalculator.interpretBMI(), "Normal weight");
@@ -86,8 +80,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.4,
         weight: 25,
-        ageYears: 10,
-        ageMonths: 6,
+        ageInDays: 3830,
         gender: "female",
       );
       expect(bmiCalculator.interpretBMI(), "Wasted");
@@ -98,8 +91,7 @@ void main() {
         standard: Standard.ASIAN,
         height: 1.4,
         weight: 40,
-        ageYears: 10,
-        ageMonths: 6,
+        ageInDays: 3830,
         gender: "female",
       );
       expect(bmiCalculator.interpretBMI(), "Overweight");
